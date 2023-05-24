@@ -1,7 +1,6 @@
 # Seedbox-Install-Components
 Components used for Seedbox Installation Script
-- https://github.com/jerry048/Dedicated-Seedbox
-- https://github.com/jerry048/Shared-Seedbox
+- https://github.com/eros520/Dedicated-Seedbox-Arm
 
 ## Credit
 qBittorrent Install - https://github.com/userdocs/qbittorrent-nox-static
@@ -13,3 +12,5 @@ Deluge Password Set - https://github.com/amefs/quickbox-lite
 autoremove-torrents - https://github.com/jerrymakesjelly/autoremove-torrents
 
 BBR Install - https://github.com/KozakaiAya/TCP_BBR
+
+Dedicated-Seedbox - https://github.com/jerry048/Dedicated-Seedbox
