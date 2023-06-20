@@ -81,8 +81,6 @@ function qBittorrent_config {
     systemctl stop qbittorrent-nox@$username
     ##
     if [[ "${qBver}" =~ "4.2."|"4.3." ]]; then
-        wget  https://raw.githubusercontent.com/eros520/Seedbox-Components-Arm/main/Torrent%20Clients/qBittorrent/qb_password_gen && chmod +x $HOME/qb_password_gen
-        PBKDF2password=$($HOME/qb_password_gen $password)
         cat << EOF >/home/$username/.config/qBittorrent/qBittorrent.conf
 [BitTorrent]
 Session\AsyncIOThreadsCount=$aio
@@ -101,13 +99,10 @@ Connection\PortRangeMin=45000
 Downloads\DiskWriteCacheSize=$Cache_qB
 Downloads\SavePath=/home/$username/qbittorrent/Downloads/
 Queueing\QueueingEnabled=false
-WebUI\Password_PBKDF2="@ByteArray($PBKDF2password)"
 WebUI\Port=8080
 WebUI\Username=$username
 EOF
     elif [[ "${qBver}" =~ "4.4."|"4.5." ]]; then
-        wget  https://raw.githubusercontent.com/eros520/Seedbox-Components-Arm/main/Torrent%20Clients/qBittorrent/qb_password_gen && chmod +x $HOME/qb_password_gen
-        PBKDF2password=$($HOME/qb_password_gen $password)
         cat << EOF >/home/$username/.config/qBittorrent/qBittorrent.conf
 [Application]
 MemoryWorkingSetLimit=$Cache_qB
@@ -129,11 +124,9 @@ Accepted=true
 Cookies=@Invalid()
 
 [Preferences]
-WebUI\Password_PBKDF2="@ByteArray($PBKDF2password)"
 WebUI\Port=8080
 WebUI\Username=$username
 EOF
-    rm qb_password_gen
     fi
     systemctl start qbittorrent-nox@$username
 }
